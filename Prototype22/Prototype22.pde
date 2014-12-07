@@ -31,7 +31,7 @@ boolean cameraReady = false;
 //First array represents number of questions
 //second array represents the colors R, G, B
 //Third array represents the number of choices the user has
-float[][][] emotions = new float[6][3][8];
+float[][][] emotions = new float[6][3][9];
 //An array that remembers all 6 choices made by the user 
 float[] r = new float[6];
 float[] g = new float[6];
