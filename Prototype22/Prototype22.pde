@@ -423,23 +423,31 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
   bluePixel = blue(img.pixels[loc]) + blueSum;//adds amount of blue user input to pixels
 
 
+
   //dictates size and shape of drawing depnding on user input 
+  int xSize;
+  int ySize;
+
   if (stage == 8) {
     if (redSum == 0) {
       stroke(redPixel, greenPixel, bluePixel, 255);
       fill(redPixel, greenPixel, bluePixel, 255);
       ellipse(x, y, 25, 25);
     } else if (redSum > 0 && redSum < 13.4) { //DONE
+      xSize = 5;
+      ySize = 5;
       stroke(redPixel, greenPixel, bluePixel, 255);
       fill(redPixel, greenPixel, bluePixel, 255);
       for (int i = 0; i < 10; i ++)
         line(x, (y+i), x+i, (y + i));
     } else if (redSum > 13.4 && redSum <= 26.8) {//DONE
+      xSize = 20;
+      ySize = 20;
       stroke(redPixel, greenPixel, bluePixel, random(0, 50));
       fill(redPixel, greenPixel, bluePixel, random(0, 25));
       strokeWeight(.5);
       for (int i = 0; i < 10; i ++) {
-        ellipse(x, y, random(0, 20), random(0, 20));
+        ellipse(x, y, random(0, xSize), random(0, ySize));
         for (int j = 0; j < 100; j ++) {
           line(x + i, (y*j), x+i, (y * j));
         }
@@ -449,7 +457,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
         strokeWeight(.5);
         stroke(redPixel, greenPixel, bluePixel, random(0, 50));
         fill(redPixel, greenPixel, bluePixel, random(0, 15));
-        ellipse(x, y, random(0, 25)+1, random(0, 25)+1);
+        ellipse(x, y, random(0, 50), random(0, 50));
         for (int j = 0; j < 10; j ++) {
           strokeWeight(2);
           stroke(redPixel, greenPixel, bluePixel, random(0, 255));
@@ -457,10 +465,12 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
         }
       }
     } else if (redSum > 53.6 && redSum <= 67) { //DONE
+      xSize = 30;
+      ySize = 30;
       for (int i = 0; i < 10; i ++) {
         noStroke();
         fill(redPixel, greenPixel/4, bluePixel/4, 255);
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         fill(redPixel, greenPixel, bluePixel, 100);
         ellipse(x, y, i*random(0, 7), i*random(0, 7));
@@ -469,7 +479,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         noStroke();
         fill(redPixel, greenPixel/4, bluePixel/4, 255);
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           strokeWeight(1.5);
@@ -482,26 +492,26 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         ellipse(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           strokeWeight(1);
           fill(redPixel, greenPixel/4, bluePixel/4, 1);
-          ellipse(x, y, j*random(0, 5), j*random(0, 5));
+          ellipse(x, y, j*random(0, 10), j*random(0, 10));
           fill(redPixel, greenPixel/4, bluePixel/4, 15);
-          ellipse(x, y, j*random(0, 2), j*random(0, 2));
+          ellipse(x, y, j*random(0, 5), j*random(0, 5));
         }
       }
     } else if (redSum > 93.8 && redSum <= 107.2) { // DONE
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         ellipse(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           stroke(redPixel/4, greenPixel/4, bluePixel/4, 10);
           noFill();
-          ellipse(x, y, j*random(0, 5), j*random(0, 5));
+          ellipse(x, y, j*random(0, 10), j*random(0, 10));
           fill(redPixel, greenPixel/4, bluePixel/4, 15);
           ellipse(x, y, j*random(0, 2), j*random(0, 2));
         }
@@ -510,13 +520,13 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           stroke(redPixel, greenPixel/4, bluePixel/4, 10);
           noFill();
-          rect(x, y, j*random(0, 3), j*random(0, 3));
-          ellipse(x, y, j*random(0, 3), j*random(0, 3));
+          rect(x, y, j*random(0, 6), j*random(0, 6));
+          ellipse(x, y, j*random(0, 6), j*random(0, 6));
           strokeWeight(1);
           stroke(redPixel, greenPixel/4, bluePixel/4, 1);
           line(x, x*i, y*i, y);
@@ -526,35 +536,38 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           stroke(redPixel, greenPixel/4, bluePixel/4, 10);
           noFill();
           rect(x, y, j*random(0, 6), j*random(0, 6));
           stroke(redPixel, greenPixel/4, bluePixel/4, 5);
-          ellipse(x, y, j*random(0, 10), j*random(0, 10));
+          ellipse(x, y, j*random(0, 60), j*random(0, 60));
           fill(redPixel, greenPixel, bluePixel, 255);
           ellipse(x, y, j*random(0, 5), j*random(0, 5));
         }
       }
     }
-
     if (greenSum == 0) {
       stroke(redPixel, greenPixel, bluePixel, 255);
       fill(redPixel, greenPixel, bluePixel, 255);
       ellipse(x, y, 15, 15);
     } else if (greenSum > 0 && greenSum < 18) { //DONE
+      xSize = 5;
+      ySize = 5;
       stroke(redPixel, greenPixel, bluePixel, 255);
       fill(redPixel, greenPixel, bluePixel, 255);
       for (int i = 0; i < 10; i ++)
         line(x, (y+i), x+i, (y + i));
     } else if (greenSum > 18 && greenSum < 36) {//DONE
+      xSize = 20;
+      ySize = 20;
       stroke(redPixel, greenPixel, bluePixel, random(0, 50));
       fill(redPixel, greenPixel, bluePixel, random(0, 25));
       strokeWeight(.5);
       for (int i = 0; i < 10; i ++) {
-        ellipse(x, y, random(0, 20), random(0, 20));
+        ellipse(x, y, random(0, xSize), random(0, ySize));
         for (int j = 0; j < 100; j ++) {
           line(x + i, (y*j), x+i, (y * j));
         }
@@ -572,10 +585,12 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
         }
       }
     } else if (greenSum > 54 && greenSum < 71) { //DONE
+      xSize = 30;
+      ySize = 30;
       for (int i = 0; i < 10; i ++) {
         noStroke();
         fill(redPixel, greenPixel/4, bluePixel/4, 255);
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         fill(redPixel, greenPixel, bluePixel, 100);
         ellipse(x, y, i*random(0, 2), i*random(0, 2));
@@ -584,7 +599,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         noStroke();
         fill(redPixel, greenPixel/4, bluePixel/4, 255);
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           strokeWeight(1.5);
@@ -597,7 +612,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         ellipse(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           strokeWeight(1);
@@ -611,7 +626,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         ellipse(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           stroke(redPixel/4, greenPixel/4, bluePixel/4, 10);
@@ -625,7 +640,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           stroke(redPixel, greenPixel/4, bluePixel/4, 10);
@@ -641,7 +656,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           stroke(redPixel, greenPixel/4, bluePixel/4, 10);
@@ -659,16 +674,20 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       fill(redPixel, greenPixel, bluePixel, 255);
       ellipse(x, y, 25, 25);
     } else if (greenSum > 0 && greenSum < 12) { //DONE
+      xSize = 5;
+      ySize = 5;
       stroke(redPixel, greenPixel, bluePixel, 255);
       fill(redPixel, greenPixel, bluePixel, 255);
       for (int i = 0; i < 10; i ++)
         line(x, (y+i), x+i, (y + i));
     } else if (blueSum  > 12 && blueSum  < 24) {//DONE
+      xSize = 20;
+      ySize = 20;
       stroke(redPixel, greenPixel, bluePixel, random(0, 60));
       fill(redPixel, greenPixel, bluePixel, random(0, 60));
       strokeWeight(.5);
       for (int i = 0; i < 10; i ++) {
-        ellipse(x, y, random(0, 50), random(0, 50));
+        ellipse(x, y, random(0, xSize), random(0, ySize));
         for (int j = 0; j < 100; j ++) {
           line(x + i, (y*j), x+i, (y * j));
         }
@@ -686,10 +705,12 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
         }
       }
     } else if (blueSum  > 30 && blueSum  < 40) { //DONE
+      xSize = 30;
+      ySize = 30;
       for (int i = 0; i < 10; i ++) {
         noStroke();
         fill(redPixel, greenPixel/4, bluePixel/4, 255);
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         fill(redPixel, greenPixel, bluePixel, 100);
         ellipse(x, y, i*random(0, 7), i*random(0, 7));
@@ -698,7 +719,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         noStroke();
         fill(redPixel, greenPixel/4, bluePixel/4, 255);
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           strokeWeight(1.5);
@@ -711,7 +732,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         ellipse(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           strokeWeight(1);
@@ -725,7 +746,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         ellipse(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           stroke(redPixel/4, greenPixel/4, bluePixel/4, 10);
@@ -739,7 +760,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           stroke(redPixel, greenPixel/4, bluePixel/4, 10);
@@ -755,7 +776,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
       for (int i = 0; i < 10; i ++) {
         stroke(redPixel, greenPixel/4, bluePixel/4, 50);
         noFill();
-        //rectMode(CENTER);
+        rectMode(CENTER);
         rect(x, y, i*random(0, 2), i*random(0, 2));
         for (int j = 0; j < 10; j ++) {
           stroke(redPixel, greenPixel/4, bluePixel/4, 10);
@@ -770,6 +791,7 @@ void stageIs8() { //function that calculates color and shape of drawing pixels
     }
   }
 }
+
 
 void leapStage8() { //painting tool for stage 8
   //comments to explain and put in function 
